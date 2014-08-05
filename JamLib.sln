@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamLib", "JamLib\JamLib.csproj", "{77A1B9E0-A047-445B-A8F6-7D8E703955BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamLibTests", "JamLibTests\JamLibTests.csproj", "{12F7BB59-9EBA-4324-80BE-05F117B5A02F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77A1B9E0-A047-445B-A8F6-7D8E703955BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A1B9E0-A047-445B-A8F6-7D8E703955BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A1B9E0-A047-445B-A8F6-7D8E703955BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A1B9E0-A047-445B-A8F6-7D8E703955BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F7BB59-9EBA-4324-80BE-05F117B5A02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F7BB59-9EBA-4324-80BE-05F117B5A02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F7BB59-9EBA-4324-80BE-05F117B5A02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F7BB59-9EBA-4324-80BE-05F117B5A02F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
