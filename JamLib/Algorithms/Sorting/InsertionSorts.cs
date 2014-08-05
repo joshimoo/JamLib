@@ -24,20 +24,19 @@
         {
             for (int i = 0; i < array.Length; i++)
             {
-                for (int j = i; j > 0; j--)
+                // Swap if left side is bigger, exits the loop if it's not
+                for (int j = i; j > 0 && (array[j - 1] > array[j]); j--)
                 {
-                    // Swap if smaller
-                    if (array[j] < array[j - 1])
-                    {
-                        // Could be done in place
-                        int temp = array[j - 1];
-                        array[j - 1] = array[j];
-                        array[j] = temp;
-                    }
-                    else { break; } // TODO: Check in the for loop exit condition, since we don't need to check the rest of the array if this fails. Since they are already sorted
+                    // Could be done in place
+                    int temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
                 }
             }
+
             return array;
         }
+
+
     }
 }
