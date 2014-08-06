@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace JamLib.Algorithms.Sorting
 {
@@ -38,6 +41,22 @@ namespace JamLib.Algorithms.Sorting
             return array;
         }
 
+        public static int[] InsertionSort(this int[] array, int interval)
+        {
+            for (int i = interval; i < array.Length; i++)
+            {
+                // Swap if left side is bigger, exits the loop if it's not
+                for (int j = i; j >= interval && (array[j - interval] > array[j]); j -= interval)
+                {
+                    // Could be done in place
+                    int temp = array[j - interval];
+                    array[j - interval] = array[j];
+                    array[j] = temp;
+                }
+            }
+            return array;
+        }
+
         public static int[] ShellSort(this int[] array)
         {
             // Using Marcin Ciura's gap sequence
@@ -47,7 +66,18 @@ namespace JamLib.Algorithms.Sorting
 
         public static int[] ShellSort(this int[] array, int[] intervals)
         {
+            // NOTE: Make Sure the intervalls contains 1 as an intervall for the final pass.
+            // Could use Assert and just Error out, but this is more robust and will function as expected even if the user of the Library does not include the final pass in the intervall
+            if (!intervals.Contains(1))
+            {
+                int[] temp = new int[intervals.Length + 1];
+                temp[0] = 1;
+                intervals.CopyTo(temp, 1);
+                intervals = temp;
+            }
+
             // NOTE: Sort the Intervall before using it to make sure that it's always descending
+            // Fun Times using a different sorting algorithm inside a sorting algorithm to make sure that the parameters are sorted correctly.
             Array.Sort(intervals, (i, j) => j.CompareTo(i));
 
             // Start with the largest gap and work down to a gap of 1 

@@ -23,6 +23,7 @@ namespace JamLib.Algorithms.Sorting.Tests
             // Enumerable.SequenceEqual 
         }
 
+
         [TestMethod()]
         public void ShellSortTest()
         {
@@ -31,6 +32,26 @@ namespace JamLib.Algorithms.Sorting.Tests
             int[] result = InsertionSorts.ShellSort(actual);
 
             CollectionAssert.AreEqual(expected, result, "ShellSort did not sort correctly");
+        }
+
+
+        [TestMethod()]
+        public void InsertionSort_Interval_Test()
+        {
+            // TODO: Add Negative Numbers as well as twice the same number to the testcases
+            int[] actual = new int[] { 62, 83, 18, 53, 7, 17, 95, 86, 47, 69, 25, 28 };
+            int[] interval5 = new int[] { 17, 28, 18, 47, 7, 25, 83, 86, 53, 69, 62, 95 };
+            int[] interval3 = new int[] { 17, 7, 18, 47, 28, 25, 69, 62, 53, 83, 86, 95 };
+            int[] interval1 = new int[] { 7, 17, 18, 25, 28, 47, 53, 62, 69, 83, 86, 95 };
+
+            int[] result = InsertionSorts.InsertionSort(actual, 5);
+            CollectionAssert.AreEqual(interval5, result, "InsertionSort with Interval 5 did not sort correctly");
+
+            result = InsertionSorts.InsertionSort(result, 3);
+            CollectionAssert.AreEqual(interval3, result, "InsertionSort with Interval 3 did not sort correctly");
+
+            result = InsertionSorts.InsertionSort(result, 1);
+            CollectionAssert.AreEqual(interval1, result, "InsertionSort with Interval 1 did not sort correctly");
         }
     }
 }
