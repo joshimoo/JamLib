@@ -19,6 +19,9 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
+// Allow the Unit Testing Project to test Methods and Classes defined as internal
+[assembly: InternalsVisibleTo("JamLibTests")]
+
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("16421a8a-247b-4048-a1a9-9631dbb0a791")]
 
