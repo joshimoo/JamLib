@@ -1,4 +1,9 @@
-﻿namespace JamLib.Algorithms.Sorting
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JamLib.Algorithms.Sorting
 {
     public static class ExchangeSorts
     {
