@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Algorithms\Sorting\ExchangeSorts.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSorts.cs" />
+    <Compile Include="Algorithms\Sorting\MergeSorts.cs" />
+    <Compile Include="Algorithms\Sorting\SelectionSorts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
