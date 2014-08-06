@@ -29,6 +29,7 @@ namespace JamLib.Algorithms.Sorting
          * http://haacked.com/archive/2010/08/12/more-optional-versioning-fun.aspx/
          * http://codebetter.com/2011/01/11/c-in-depth-optional-parameters-and-named-arguments-2/
          * http://lostechies.com/jimmybogard/2010/05/18/caveats-of-c-4-0-optional-parameters/
+         * http://blogs.msdn.com/b/ericlippert/archive/tags/optional+arguments/
          * 
          * Pro:
          * The gist is that optional Parameters are great for COM Interop
@@ -37,10 +38,9 @@ namespace JamLib.Algorithms.Sorting
          * 
          * Negative:
          * The problems are that they get compiled into the calling code, therefore they only get updated once you recompile against the updated library.
-         * They are not supported on all Platforms
+         * They are not supported in all Languages
          * Expressions need to supply the default parameter
          * Calling Code could still reference a method call where the parameter order was changed, but since the parameter types would be the same the compiler would not recognize the problem
-         * 
          */
 
         // NOTE: I think a public api consumer has no need to call InsertionSort with a specified interval parameter?
@@ -62,12 +62,14 @@ namespace JamLib.Algorithms.Sorting
             return array;
         }
 
+
         public static int[] ShellSort(this int[] array)
         {
             // Using Marcin Ciura's gap sequence
             int[] intervals = new int[] { 701, 301, 132, 57, 23, 10, 4, 1 };
             return array.ShellSort(intervals);
         }
+
 
         public static int[] ShellSort(this int[] array, int[] intervals)
         {

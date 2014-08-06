@@ -5,11 +5,22 @@ using System.Text;
 
 namespace JamLib.Algorithms.Sorting
 {
+    /// <summary>
+    /// Bubble sort: http://en.wikipedia.org/wiki/Bubble_sort
+    /// Cocktail sort:
+    /// Odd–even sort:
+    /// Comb sort:
+    /// Gnome sort:
+    /// Quicksort:
+    /// Stooge sort:
+    /// Bogosort:
+    /// </summary>
     public static class ExchangeSorts
     {
+
         public static int[] BubbleSort(this int[] array)
         {
-            // Run this atleast once, could use a do while instead
+            // NOTE: Run this atleast once, could use a do while instead
             bool swapped = true;
             while (swapped)
             {
@@ -28,8 +39,10 @@ namespace JamLib.Algorithms.Sorting
                     }
                 }
             }
+
             return array;
         }
+
 
     }
 }
