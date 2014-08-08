@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\Sorting\ExchangeSortsTests.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSortsTests.cs" />
+    <Compile Include="Algorithms\Sorting\MergeSortsTests.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSortsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
