@@ -17,8 +17,9 @@ namespace JamLib.Algorithms.Sorting
     /// </summary>
     public static class ExchangeSorts
     {
-
-        public static void BubbleSort(this int[] data)
+        // TODO: Think about adding additional overloads for IComparable as well as Comparison (so that we can use lambda expressions)
+        public static void BubbleSort<T>(this T[] data) { BubbleSort(data, Comparer<T>.Default); }
+        public static void BubbleSort<T>(this T[] data, IComparer<T> comparer)
         {
             // NOTE: Run this atleast once, could use a do while instead
             bool swapped = true;
@@ -30,9 +31,9 @@ namespace JamLib.Algorithms.Sorting
                 for (int i = 1; i < data.Length; i++)
                 {
                     // if this pair is out of order, swap them and remember something changed
-                    if (data[i - 1] > data[i])
+                    if (comparer.Compare(data[i - 1], data[i]) > 0)
                     {
-                        int temp = data[i - 1];
+                        T temp = data[i - 1];
                         data[i - 1] = data[i];
                         data[i] = temp;
                         swapped = true;
@@ -40,7 +41,6 @@ namespace JamLib.Algorithms.Sorting
                 }
             }
         }
-
 
     }
 }
