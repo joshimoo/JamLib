@@ -33,9 +33,6 @@ namespace JamLib.Algorithms.Sorting
                     // if this pair is out of order, swap them and remember something changed
                     if (comparer.Compare(data[i - 1], data[i]) > 0)
                     {
-                        //T temp = data[i - 1];
-                        //data[i - 1] = data[i];
-                        //data[i] = temp;
                         SortingUtils.Swap(data, i - 1, i);
                         swapped = true;
                     }
