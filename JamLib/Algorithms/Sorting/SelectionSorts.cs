@@ -33,9 +33,10 @@ namespace JamLib.Algorithms.Sorting
                 // Swap the Elements
                 if (minIndex != i)
                 {
-                    int temp = data[i];
-                    data[i] = data[minIndex];
-                    data[minIndex] = temp;
+                    //int temp = data[i];
+                    //data[i] = data[minIndex];
+                    //data[minIndex] = temp;
+                    SortingUtils.Swap(data, i, minIndex);
                 }
             }
         }

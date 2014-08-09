@@ -33,10 +33,10 @@ namespace JamLib.Algorithms.Sorting
                 // Swap if left side is bigger, exits the loop if it's not
                 for (int j = i; j >= interval && (data[j - interval] > data[j]); j -= interval)
                 {
-                    // Could be done in place
-                    int temp = data[j - interval];
-                    data[j - interval] = data[j];
-                    data[j] = temp;
+                    // int temp = data[j - interval];
+                    // data[j - interval] = data[j];
+                    // data[j] = temp;
+                    SortingUtils.Swap(data, j - interval, j);
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace JamLib.Algorithms.Sorting
         public static void ShellSort(this int[] data, int[] intervals)
         {
             // NOTE: Make Sure the intervalls contains 1 as an intervall for the final pass.
-            // Could use Assert and just Error out, but this is more robust and will function as expected even if the user of the Library does not include the final pass in the intervall
+            // TODO: Evaluate Could use Assert and just Error out, but this is more robust and will function as expected even if the final pass is not included in the intervall
             if (!intervals.Contains(1))
             {
                 int[] temp = new int[intervals.Length + 1];
