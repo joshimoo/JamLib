@@ -16,9 +16,9 @@ namespace JamLib.Algorithms.Sorting.Tests
             // NOTE: Using InsertionSort() directly instead of as an extension method since, it's more expressive.
             int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24 };
             int[] expected = new int[] { -24, -4, 0, 1, 2, 4, 5, 6, 10, 12 };
-            int[] result = InsertionSorts.InsertionSort(actual);
+            InsertionSorts.InsertionSort(actual);
 
-            CollectionAssert.AreEqual(expected, result, "InsertionSort did not sort correctly");
+            CollectionAssert.AreEqual(expected, actual, "InsertionSort did not sort correctly");
             // CollectionAssert.AreEqual
             // Enumerable.SequenceEqual 
         }
@@ -29,9 +29,9 @@ namespace JamLib.Algorithms.Sorting.Tests
         {
             int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24 };
             int[] expected = new int[] { -24, -4, 0, 1, 2, 4, 5, 6, 10, 12 };
-            int[] result = InsertionSorts.ShellSort(actual);
+            InsertionSorts.ShellSort(actual);
 
-            CollectionAssert.AreEqual(expected, result, "ShellSort did not sort correctly");
+            CollectionAssert.AreEqual(expected, actual, "ShellSort did not sort correctly");
         }
 
 
@@ -44,14 +44,14 @@ namespace JamLib.Algorithms.Sorting.Tests
             int[] interval3 = new int[] { 17, 7, 18, 47, 28, 25, 69, 62, 53, 83, 86, 95 };
             int[] interval1 = new int[] { 7, 17, 18, 25, 28, 47, 53, 62, 69, 83, 86, 95 };
 
-            int[] result = InsertionSorts.InsertionSort(actual, 5);
-            CollectionAssert.AreEqual(interval5, result, "InsertionSort with Interval 5 did not sort correctly");
+            InsertionSorts.InsertionSort(actual, 5);
+            CollectionAssert.AreEqual(interval5, actual, "InsertionSort with Interval 5 did not sort correctly");
 
-            result = InsertionSorts.InsertionSort(result, 3);
-            CollectionAssert.AreEqual(interval3, result, "InsertionSort with Interval 3 did not sort correctly");
+            InsertionSorts.InsertionSort(actual, 3);
+            CollectionAssert.AreEqual(interval3, actual, "InsertionSort with Interval 3 did not sort correctly");
 
-            result = InsertionSorts.InsertionSort(result, 1);
-            CollectionAssert.AreEqual(interval1, result, "InsertionSort with Interval 1 did not sort correctly");
+            InsertionSorts.InsertionSort(actual, 1);
+            CollectionAssert.AreEqual(interval1, actual, "InsertionSort with Interval 1 did not sort correctly");
         }
     }
 }

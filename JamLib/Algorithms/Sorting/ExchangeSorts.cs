@@ -18,7 +18,7 @@ namespace JamLib.Algorithms.Sorting
     public static class ExchangeSorts
     {
 
-        public static int[] BubbleSort(this int[] array)
+        public static void BubbleSort(this int[] data)
         {
             // NOTE: Run this atleast once, could use a do while instead
             bool swapped = true;
@@ -27,20 +27,18 @@ namespace JamLib.Algorithms.Sorting
                 // Reset Swap Status
                 swapped = false;
 
-                for (int i = 1; i < array.Length; i++)
+                for (int i = 1; i < data.Length; i++)
                 {
                     // if this pair is out of order, swap them and remember something changed
-                    if (array[i - 1] > array[i])
+                    if (data[i - 1] > data[i])
                     {
-                        int temp = array[i - 1];
-                        array[i - 1] = array[i];
-                        array[i] = temp;
+                        int temp = data[i - 1];
+                        data[i - 1] = data[i];
+                        data[i] = temp;
                         swapped = true;
                     }
                 }
             }
-
-            return array;
         }
 
 

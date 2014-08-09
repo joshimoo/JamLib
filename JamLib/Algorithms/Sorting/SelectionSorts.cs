@@ -16,30 +16,28 @@ namespace JamLib.Algorithms.Sorting
     public static class SelectionSorts
     {
 
-        public static int[] SelectionSort(this int[] array)
+        public static void SelectionSort(this int[] data)
         {
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < data.Length - 1; i++)
             {
                 // Assume the first element is the minimum
                 int minIndex = i;
 
                 // test against elements after i to find the smallest
-                for (int j = i + 1; j < array.Length; j++)
+                for (int j = i + 1; j < data.Length; j++)
                 {
                     // if this element is less, then it is the new minimum
-                    if (array[minIndex] > array[j]) { minIndex = j; }
+                    if (data[minIndex] > data[j]) { minIndex = j; }
                 }
 
                 // Swap the Elements
                 if (minIndex != i)
                 {
-                    int temp = array[i];
-                    array[i] = array[minIndex];
-                    array[minIndex] = temp;
+                    int temp = data[i];
+                    data[i] = data[minIndex];
+                    data[minIndex] = temp;
                 }
             }
-
-            return array;
         }
 
 

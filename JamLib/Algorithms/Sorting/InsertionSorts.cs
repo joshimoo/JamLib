@@ -44,34 +44,32 @@ namespace JamLib.Algorithms.Sorting
          */
 
         // NOTE: I think a public api consumer has no need to call InsertionSort with a specified interval parameter?
-        public static int[] InsertionSort(this int[] array) { return InsertionSort(array, 1); }
-        internal static int[] InsertionSort(this int[] array, int interval)
+        public static void InsertionSort(this int[] data) { InsertionSort(data, 1); }
+        internal static void InsertionSort(this int[] data, int interval)
         {
-            for (int i = interval; i < array.Length; i++)
+            for (int i = interval; i < data.Length; i++)
             {
                 // Swap if left side is bigger, exits the loop if it's not
-                for (int j = i; j >= interval && (array[j - interval] > array[j]); j -= interval)
+                for (int j = i; j >= interval && (data[j - interval] > data[j]); j -= interval)
                 {
                     // Could be done in place
-                    int temp = array[j - interval];
-                    array[j - interval] = array[j];
-                    array[j] = temp;
+                    int temp = data[j - interval];
+                    data[j - interval] = data[j];
+                    data[j] = temp;
                 }
             }
-
-            return array;
         }
 
 
-        public static int[] ShellSort(this int[] array)
+        public static void ShellSort(this int[] data)
         {
             // Using Marcin Ciura's gap sequence
             int[] intervals = new int[] { 701, 301, 132, 57, 23, 10, 4, 1 };
-            return array.ShellSort(intervals);
+            ShellSort(data, intervals);
         }
 
 
-        public static int[] ShellSort(this int[] array, int[] intervals)
+        public static void ShellSort(this int[] data, int[] intervals)
         {
             // NOTE: Make Sure the intervalls contains 1 as an intervall for the final pass.
             // Could use Assert and just Error out, but this is more robust and will function as expected even if the user of the Library does not include the final pass in the intervall
@@ -91,10 +89,8 @@ namespace JamLib.Algorithms.Sorting
             foreach (var interval in intervals)
             {
                 // Perform InsertionSort with the current interval.
-                array = InsertionSort(array, interval);
+                InsertionSort(data, interval);
             }
-
-            return array;
         }
 
     }
