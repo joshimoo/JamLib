@@ -24,26 +24,7 @@ namespace JamLib.Algorithms.Sorting
         // Traverse Search Space in Reverse
         // Swap Element if smaller
 
-        /* Optional Parameters vs Method Overloading Discussion
-         * http://haacked.com/archive/2010/08/10/versioning-issues-with-optional-arguments.aspx/
-         * http://haacked.com/archive/2010/08/12/more-optional-versioning-fun.aspx/
-         * http://codebetter.com/2011/01/11/c-in-depth-optional-parameters-and-named-arguments-2/
-         * http://lostechies.com/jimmybogard/2010/05/18/caveats-of-c-4-0-optional-parameters/
-         * http://blogs.msdn.com/b/ericlippert/archive/tags/optional+arguments/
-         * 
-         * Pro:
-         * The gist is that optional Parameters are great for COM Interop
-         * Named Parameters
-         * Inline Documentation
-         * 
-         * Negative:
-         * The problems are that they get compiled into the calling code, therefore they only get updated once you recompile against the updated library.
-         * They are not supported in all Languages
-         * Expressions need to supply the default parameter
-         * Calling Code could still reference a method call where the parameter order was changed, but since the parameter types would be the same the compiler would not recognize the problem
-         */
-
-        // NOTE: I think a public api consumer has no need to call InsertionSort with a specified interval parameter?
+        // NOTE: an external api consumer has no need to call InsertionSort with a specified interval parameter.
         public static void InsertionSort(this int[] data) { InsertionSort(data, 1); }
         internal static void InsertionSort(this int[] data, int interval)
         {

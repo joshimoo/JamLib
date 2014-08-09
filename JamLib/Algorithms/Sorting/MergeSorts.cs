@@ -46,7 +46,6 @@ namespace JamLib.Algorithms.Sorting
             }
         }
 
-        // Merge Routine TODO: Cleanup the Comments
         private static void Merge(int[] data, int startIndex, int midIndex, int endIndex)
         {
             int length = endIndex - startIndex;
