@@ -14,8 +14,7 @@ namespace JamLib.Algorithms.Sorting
     /// </summary>
     public static class MergeSorts
     {
-        // TODO: Refactor to be generic
-        public static void MergeSort(this int[] data)
+        public static void MergeSort<T>(this IList<T> data)
         {
             // Pseudo Code:
             // Devide the list in half
@@ -24,12 +23,12 @@ namespace JamLib.Algorithms.Sorting
             //     8
             //  4    4
             // 2 2  2 2
-            MergeSort(data, 0, data.Length);
+            MergeSort(data, 0, data.Count, Comparer<T>.Default);
         }
 
 
         // endIndex is exclusive
-        private static void MergeSort(int[] data, int startIndex, int endIndex)
+        private static void MergeSort<T>(IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
         {
             // Make sure the startIndex is smaller then the EndIndex
             if (startIndex < endIndex)
@@ -40,16 +39,16 @@ namespace JamLib.Algorithms.Sorting
 
                 // Calculate the Mid Boundary, and split the work in half.
                 int midIndex = startIndex + (length / 2); ;
-                MergeSort(data, startIndex, midIndex);
-                MergeSort(data, midIndex, endIndex);
-                Merge(data, startIndex, midIndex, endIndex);
+                MergeSort(data, startIndex, midIndex, comparer);
+                MergeSort(data, midIndex, endIndex, comparer);
+                Merge(data, startIndex, midIndex, endIndex, comparer);
             }
         }
 
-        private static void Merge(int[] data, int startIndex, int midIndex, int endIndex)
+        private static void Merge<T>(IList<T> data, int startIndex, int midIndex, int endIndex, IComparer<T> comparer)
         {
             int length = endIndex - startIndex;
-            int[] temp = new int[length];
+            var temp = new T[length];
             int leftIndex = startIndex;
             int rightIndex = midIndex;
 
@@ -65,7 +64,7 @@ namespace JamLib.Algorithms.Sorting
                 // if (m_value < value) return -1;
                 // if (m_value > value) return 1;
                 // return 0;
-                else if (data[rightIndex].CompareTo(data[leftIndex]) < 0) { temp[i] = data[rightIndex++]; }
+                else if (comparer.Compare(data[leftIndex], data[rightIndex]) > 0) { temp[i] = data[rightIndex++]; }
 
                 // The Left element is smaller
                 else { temp[i] = data[leftIndex++]; }
