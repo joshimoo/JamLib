@@ -25,32 +25,32 @@ namespace JamLib.Algorithms.Sorting
         // Swap Element if smaller
 
         // NOTE: an external api consumer has no need to call InsertionSort with a specified interval parameter.
-        public static void InsertionSort(this int[] data) { InsertionSort(data, 1); }
-        internal static void InsertionSort(this int[] data, int interval)
+        public static void InsertionSort<T>(this IList<T> data) { InsertionSort(data, 1, Comparer<T>.Default); }
+        public static void InsertionSort<T>(this IList<T> data, IComparer<T> comparer) { InsertionSort(data, 1, comparer); }
+        internal static void InsertionSort<T>(this IList<T> data, int interval) { InsertionSort(data, interval, Comparer<T>.Default); }
+        internal static void InsertionSort<T>(this IList<T> data, int interval, IComparer<T> comparer)
         {
-            for (int i = interval; i < data.Length; i++)
+            for (int i = interval; i < data.Count; i++)
             {
                 // Swap if left side is bigger, exits the loop if it's not
-                for (int j = i; j >= interval && (data[j - interval] > data[j]); j -= interval)
+                for (int j = i; j >= interval && (comparer.Compare(data[j - interval], data[j]) > 0); j -= interval)
                 {
-                    // int temp = data[j - interval];
-                    // data[j - interval] = data[j];
-                    // data[j] = temp;
                     SortingUtils.Swap(data, j - interval, j);
                 }
             }
         }
 
 
-        public static void ShellSort(this int[] data)
+        public static void ShellSort<T>(this IList<T> data) { ShellSort(data, Comparer<T>.Default); }
+        public static void ShellSort<T>(this IList<T> data, IComparer<T> comparer)
         {
             // Using Marcin Ciura's gap sequence
             int[] intervals = new int[] { 701, 301, 132, 57, 23, 10, 4, 1 };
-            ShellSort(data, intervals);
+            ShellSort(data, intervals, comparer);
         }
 
-
-        public static void ShellSort(this int[] data, int[] intervals)
+        public static void ShellSort<T>(this IList<T> data, int[] intervals) { ShellSort(data, intervals, Comparer<T>.Default); }
+        public static void ShellSort<T>(this IList<T> data, int[] intervals, IComparer<T> comparer)
         {
             // NOTE: Make Sure the intervalls contains 1 as an intervall for the final pass.
             // TODO: Evaluate Could use Assert and just Error out, but this is more robust and will function as expected even if the final pass is not included in the intervall
@@ -70,7 +70,7 @@ namespace JamLib.Algorithms.Sorting
             foreach (var interval in intervals)
             {
                 // Perform InsertionSort with the current interval.
-                InsertionSort(data, interval);
+                InsertionSort(data, interval, comparer);
             }
         }
 

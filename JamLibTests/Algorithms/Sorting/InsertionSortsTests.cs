@@ -23,17 +23,15 @@ namespace JamLib.Algorithms.Sorting.Tests
             // Enumerable.SequenceEqual 
         }
 
-
         [TestMethod()]
-        public void ShellSortTest()
+        public void InsertionSort_List_Test()
         {
-            int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
-            int[] expected = new int[] { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
-            InsertionSorts.ShellSort(actual);
+            var actual = new List<double> { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
+            var expected = new List<double> { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
+            InsertionSorts.InsertionSort(actual);
 
-            CollectionAssert.AreEqual(expected, actual, "ShellSort did not sort correctly");
+            CollectionAssert.AreEqual(expected, actual, "InsertionSort<T> did not sort correctly");
         }
-
 
         [TestMethod()]
         public void InsertionSort_Interval_Test()
@@ -52,6 +50,26 @@ namespace JamLib.Algorithms.Sorting.Tests
 
             InsertionSorts.InsertionSort(actual, 1);
             CollectionAssert.AreEqual(interval1, actual, "InsertionSort with Interval 1 did not sort correctly");
+        }
+
+        [TestMethod()]
+        public void ShellSortTest()
+        {
+            int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
+            int[] expected = new int[] { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
+            InsertionSorts.ShellSort(actual);
+
+            CollectionAssert.AreEqual(expected, actual, "ShellSort did not sort correctly");
+        }
+
+        [TestMethod()]
+        public void ShellSort_List_Test()
+        {
+            var actual = new List<double> { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
+            var expected = new List<double> { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
+            InsertionSorts.ShellSort(actual);
+
+            CollectionAssert.AreEqual(expected, actual, "ShellSort<T> did not sort correctly");
         }
     }
 }
