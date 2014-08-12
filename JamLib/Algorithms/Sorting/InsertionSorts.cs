@@ -25,7 +25,7 @@ namespace JamLib.Algorithms.Sorting
         // Swap Element if smaller
 
         // NOTE: an external api consumer has no need to call InsertionSort with a specified interval parameter.
-        public static void InsertionSort<T>(this IList<T> data) { InsertionSort(data, 1, Comparer<T>.Default); }
+        public static void InsertionSort<T>(this IList<T> data) { InsertionSort(data, Comparer<T>.Default); }
         public static void InsertionSort<T>(this IList<T> data, IComparer<T> comparer) { InsertionSort(data, 1, comparer); }
         internal static void InsertionSort<T>(this IList<T> data, int interval) { InsertionSort(data, interval, Comparer<T>.Default); }
         internal static void InsertionSort<T>(this IList<T> data, int interval, IComparer<T> comparer)

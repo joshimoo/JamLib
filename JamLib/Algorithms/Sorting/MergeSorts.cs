@@ -14,7 +14,9 @@ namespace JamLib.Algorithms.Sorting
     /// </summary>
     public static class MergeSorts
     {
-        public static void MergeSort<T>(this IList<T> data)
+
+        public static void MergeSort<T>(this IList<T> data) { MergeSort(data, Comparer<T>.Default); }
+        public static void MergeSort<T>(this IList<T> data, IComparer<T> comparer)
         {
             // Pseudo Code:
             // Devide the list in half
@@ -23,7 +25,7 @@ namespace JamLib.Algorithms.Sorting
             //     8
             //  4    4
             // 2 2  2 2
-            MergeSort(data, 0, data.Count, Comparer<T>.Default);
+            MergeSort(data, 0, data.Count, comparer);
         }
 
 
