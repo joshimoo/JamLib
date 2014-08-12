@@ -40,29 +40,31 @@ namespace JamLib.Algorithms.Sorting
             }
         }
 
+
         // TODO: Think about creating individual classes for each algorithm
-        public static void QuickSort(this int[] data)
+        public static void QuickSort<T>(this IList<T> data) { QuickSort(data, Comparer<T>.Default); }
+        public static void QuickSort<T>(this IList<T> data, IComparer<T> comparer)
         {
             // Shuffle to make sure, we don't hit worst case performance
             SortingUtils.Shuffle(data);
-            QuickSort(data, 0, data.Length - 1);
+            QuickSort(data, 0, data.Count - 1, comparer);
         }
 
         // startIndex, endIndex is inclusive
-        private static void QuickSort(this int[] data, int startIndex, int endIndex)
+        private static void QuickSort<T>(this IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
         {
             // Exit early, once the indexes cross
             if (startIndex >= endIndex) { return; }
 
             // Calculate Partion index then sort both sides from the partion index
-            int partitionIndex = Partition(data, startIndex, endIndex);
-            QuickSort(data, startIndex, partitionIndex - 1);
-            QuickSort(data, partitionIndex + 1, endIndex);
+            int partitionIndex = Partition(data, startIndex, endIndex, comparer);
+            QuickSort(data, startIndex, partitionIndex - 1, comparer);
+            QuickSort(data, partitionIndex + 1, endIndex, comparer);
         }
 
         // partition the subarray data[startIndex .. endIndex] so that data[startIndex .. partitionIndex-1] <= data[partitionIndex] <= data[partitionIndex+1 .. endIndex]
         // then return the partition index
-        private static int Partition(int[] data, int startIndex, int endIndex)
+        private static int Partition<T>(IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
         {
             int leftIndex = startIndex;
             int rightIndex = endIndex + 1; // also acts as the final partition index
@@ -71,13 +73,13 @@ namespace JamLib.Algorithms.Sorting
             while (true)
             {
                 // find item on the left side to swap
-                while (SortingUtils.Less(data[++leftIndex], target))
+                while (SortingUtils.Less(data[++leftIndex], target, comparer))
                 {
                     if (leftIndex == endIndex) { break; }
                 }
 
                 // find item on the right side to swap
-                while (SortingUtils.Less(target, data[--rightIndex]))
+                while (SortingUtils.Less(target, data[--rightIndex], comparer))
                 {
                     if (rightIndex == startIndex) { break; }
                 }
