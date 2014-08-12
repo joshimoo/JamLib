@@ -96,6 +96,36 @@ namespace JamLib.Algorithms.Sorting
             return rightIndex;
         }
 
+        // Implement 3Way QuickSort wish uses a 3 way approach for partitioning, based on http://algs4.cs.princeton.edu/23quicksort/Quick3way.java.html
+        public static void QuickSort3Way<T>(IList<T> data) { QuickSort3Way(data, Comparer<T>.Default); }
+        public static void QuickSort3Way<T>(IList<T> data, IComparer<T> comparer)
+        {
+            // Shuffle to make sure, we don't hit worst case performance
+            SortingUtils.Shuffle(data);
+            QuickSort3Way(data, 0, data.Count - 1, comparer);
+        }
+
+        public static void QuickSort3Way<T>(IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
+        {
+            if (startIndex >= endIndex) { return; }
+
+            int leftIndex = startIndex;
+            int rightIndex = endIndex;
+            int i = startIndex;
+            T target = data[startIndex];
+
+            while (i <= rightIndex)
+            {
+                int cmp = comparer.Compare(data[i], target);
+                if (cmp < 0) { SortingUtils.Swap(data, leftIndex++, i++); }
+                else if (cmp > 0) { SortingUtils.Swap(data, i, rightIndex--); }
+                else { i++; }
+            }
+
+            // data[startIndex..leftIndex-1] < target = data[leftIndex..rightIndex] < data[rightIndex+1..endIndex]. 
+            QuickSort3Way(data, startIndex, leftIndex - 1, comparer);
+            QuickSort3Way(data, rightIndex + 1, endIndex, comparer);
+        }
 
     }
 }
