@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace JamLib.Algorithms.Sorting
+namespace JamLib.Algorithms.Sorting.MergeSorts
 {
-    /// <summary>
-    /// Merge sort: http://en.wikipedia.org/wiki/Merge_sort
-    /// Cascade merge sort
-    /// Oscillating merge sort
-    /// Polyphase merge sort
-    /// Strand sort
-    /// </summary>
-    public static class MergeSorts
+    public static class MergeSort
     {
 
-        public static void MergeSort<T>(this IList<T> data) { MergeSort(data, Comparer<T>.Default); }
-        public static void MergeSort<T>(this IList<T> data, IComparer<T> comparer)
+        public static void Sort<T>(IList<T> data) { Sort(data, Comparer<T>.Default); }
+        public static void Sort<T>(IList<T> data, IComparer<T> comparer)
         {
             // Pseudo Code:
             // Devide the list in half
@@ -25,12 +15,16 @@ namespace JamLib.Algorithms.Sorting
             //     8
             //  4    4
             // 2 2  2 2
-            MergeSort(data, 0, data.Count, comparer);
+            Sort(data, 0, data.Count, comparer);
         }
 
 
-        // endIndex is exclusive
-        private static void MergeSort<T>(IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
+        /// <summary>
+        /// MergeSort the data in the array beetwen startIndex and endIndex
+        /// </summary>
+        /// <param name="startIndex">is inclusive</param>
+        /// <param name="endIndex">is exclusive</param>
+        private static void Sort<T>(IList<T> data, int startIndex, int endIndex, IComparer<T> comparer)
         {
             // Make sure the startIndex is smaller then the EndIndex
             if (startIndex < endIndex)
@@ -41,8 +35,8 @@ namespace JamLib.Algorithms.Sorting
 
                 // Calculate the Mid Boundary, and split the work in half.
                 int midIndex = startIndex + (length / 2); ;
-                MergeSort(data, startIndex, midIndex, comparer);
-                MergeSort(data, midIndex, endIndex, comparer);
+                Sort(data, startIndex, midIndex, comparer);
+                Sort(data, midIndex, endIndex, comparer);
                 Merge(data, startIndex, midIndex, endIndex, comparer);
             }
         }

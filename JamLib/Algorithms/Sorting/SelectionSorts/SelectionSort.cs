@@ -1,22 +1,11 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace JamLib.Algorithms.Sorting
+namespace JamLib.Algorithms.Sorting.SelectionSorts
 {
-    /// <summary>
-    /// Selection sort: http://en.wikipedia.org/wiki/Selection_sort
-    /// Heapsort:
-    /// Smoothsort:
-    /// Cartesian tree sort:
-    /// Tournament sort:
-    /// Cycle sort:
-    /// </summary>
-    public static class SelectionSorts
+    public static class SelectionSort
     {
-        public static void SelectionSort<T>(this IList<T> data) { SelectionSort(data, Comparer<T>.Default); }
-        public static void SelectionSort<T>(this IList<T> data, IComparer<T> comparer)
+        public static void Sort<T>(this IList<T> data) { Sort(data, Comparer<T>.Default); }
+        public static void Sort<T>(this IList<T> data, IComparer<T> comparer)
         {
             for (int i = 0; i < data.Count - 1; i++)
             {
