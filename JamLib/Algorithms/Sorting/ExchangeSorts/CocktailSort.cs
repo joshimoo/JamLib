@@ -11,11 +11,11 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
             // NOTE: Optimization, since each pass trough the array the first/last element is always in it's final place. We no longer need to check them.
             int startIndex = 0;
             int endIndex = data.Count;
-            bool swapped = true;
-            while (swapped)
+            bool sorted = false;
+            while (!sorted)
             {
-                // Reset Swap Status
-                swapped = false;
+                // Reset Sort Status
+                sorted = true;
 
                 // NOTE: Optimization increases startIndex because the elements before startIndex are in correct order
                 startIndex++;
@@ -27,13 +27,13 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
                     if (comparer.Compare(data[i - 1], data[i]) > 0)
                     {
                         SortingUtils.Swap(data, i - 1, i);
-                        swapped = true;
+                        sorted = false;
                     }
                 }
 
                 // we can exit early if no swaps occurred.
-                if (!swapped) { break; }
-                else { swapped = false; }
+                if (sorted) { break; }
+                else { sorted = true; }
 
                 // NOTE: Optimization decreases endIndex because the elements after endIndex are in correct order
                 endIndex--;
@@ -45,10 +45,9 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
                     if (comparer.Compare(data[i - 1], data[i]) > 0)
                     {
                         SortingUtils.Swap(data, i - 1, i);
-                        swapped = true;
+                        sorted = false;
                     }
                 }
-
             }
         }
 

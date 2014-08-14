@@ -9,11 +9,11 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
         public static void Sort<T>(IList<T> data, IComparer<T> comparer)
         {
             int length = data.Count;
-            bool swapped = true;
-            while (swapped)
+            bool sorted = false;
+            while (!sorted)
             {
-                // Reset Swap Status
-                swapped = false;
+                // Reset Sort Status
+                sorted = true;
 
                 for (int i = 1; i < length; i++)
                 {
@@ -21,7 +21,7 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
                     if (comparer.Compare(data[i - 1], data[i]) > 0)
                     {
                         SortingUtils.Swap(data, i - 1, i);
-                        swapped = true;
+                        sorted = false;
                     }
                 }
 
