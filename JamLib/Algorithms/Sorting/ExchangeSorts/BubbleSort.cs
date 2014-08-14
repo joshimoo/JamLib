@@ -8,14 +8,14 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
         public static void Sort<T>(IList<T> data) { Sort(data, Comparer<T>.Default); }
         public static void Sort<T>(IList<T> data, IComparer<T> comparer)
         {
-            // NOTE: Run this atleast once, could use a do while instead
+            int length = data.Count;
             bool swapped = true;
             while (swapped)
             {
                 // Reset Swap Status
                 swapped = false;
 
-                for (int i = 1; i < data.Count; i++)
+                for (int i = 1; i < length; i++)
                 {
                     // if this pair is out of order, swap them and remember something changed
                     if (comparer.Compare(data[i - 1], data[i]) > 0)
@@ -24,6 +24,9 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts
                         swapped = true;
                     }
                 }
+
+                // NOTE: Optimization, since each pass trough the array the last element is always in it's final place. We no longer need to check it.
+                length--;
             }
         }
 
