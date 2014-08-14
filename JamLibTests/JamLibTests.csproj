@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Algorithms\Sorting\ExchangeSorts\OddEvenSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3WayTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSortTests.cs" />
