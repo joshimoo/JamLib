@@ -50,13 +50,13 @@
     <Compile Include="Algorithms\Sorting\MergeSorts\MergeSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSort.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtils.cs" />
+    <Compile Include="DataStructures\Lists\List.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\Hashing\" />
     <Folder Include="Algorithms\Searching\" />
     <Folder Include="DataStructures\Heaps\" />
-    <Folder Include="DataStructures\Lists\" />
     <Folder Include="DataStructures\Trees\" />
   </ItemGroup>
   <ItemGroup>
