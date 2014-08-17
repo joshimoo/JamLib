@@ -6,8 +6,9 @@ namespace JamLib.DataStructures.Lists
 {
     /// <summary>
     /// NOTE: DO NOT USE THIS CLASS, INSTEAD USE THE NET FRAMEWORK IMPLEMENTATION
+    /// This Class uses some tricks, I saw in the Net Framework implementation
     /// </summary>
-    internal class List<T> : IList<T>
+    public class List<T> : IList<T>
     {
         // HACK: using an empty array is better, since we don't need special handling for null [explanation]: http://stackoverflow.com/questions/3102353/what-happens-if-i-initialize-an-array-to-size-0
         static readonly T[] emptyArray = new T[0];

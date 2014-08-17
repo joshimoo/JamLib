@@ -39,6 +39,13 @@ namespace JamLib.DataStructures.Lists.Tests
         }
 
         [TestMethod()]
+        public void FindTest()
+        {
+            var list = new SinglyLinkedList<int> { 1, 0, -1 };
+            Assert.IsNotNull(list.Find(0), "The list does not contain the item");
+        }
+
+        [TestMethod()]
         public void CopyToTest()
         {
             // NOTE: the Add method, adds them to the front of the list, therefore the list is in reverse
@@ -48,6 +55,13 @@ namespace JamLib.DataStructures.Lists.Tests
             list.CopyTo(actual, 0);
 
             CollectionAssert.AreEqual(expected, actual, "The arrays do not match");
+        }
+
+
+        [TestMethod()]
+        public void GetEnumeratorTest()
+        {
+            Assert.Fail();
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace JamLib.Algorithms.Sorting.ExchangeSorts.Tests
 {
+    [TestClass()]
     public class QuickSortTests
     {
         [TestMethod()]
