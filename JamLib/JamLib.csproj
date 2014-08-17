@@ -50,7 +50,11 @@
     <Compile Include="Algorithms\Sorting\MergeSorts\MergeSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSort.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtils.cs" />
+    <Compile Include="DataStructures\Lists\DoublyLinkedList.cs" />
+    <Compile Include="DataStructures\Lists\ILinkedList.cs" />
+    <Compile Include="DataStructures\Lists\IndexedLinkedList.cs" />
     <Compile Include="DataStructures\Lists\List.cs" />
+    <Compile Include="DataStructures\Lists\SinglyLinkedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
