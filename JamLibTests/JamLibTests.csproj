@@ -62,6 +62,7 @@
     <Compile Include="Algorithms\Sorting\SelectionSortsTests.cs" />
     <Compile Include="DataStructures\Lists\IndexedLinkedListTests.cs" />
     <Compile Include="DataStructures\Lists\SinglyLinkedListTests.cs" />
+    <Compile Include="DataStructures\Trees\BinarySearchTreeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

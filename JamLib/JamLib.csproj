@@ -55,13 +55,13 @@
     <Compile Include="DataStructures\Lists\IndexedLinkedList.cs" />
     <Compile Include="DataStructures\Lists\List.cs" />
     <Compile Include="DataStructures\Lists\SinglyLinkedList.cs" />
+    <Compile Include="DataStructures\Trees\BinarySearchTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\Hashing\" />
     <Folder Include="Algorithms\Searching\" />
     <Folder Include="DataStructures\Heaps\" />
-    <Folder Include="DataStructures\Trees\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Algorithms\Sorting\ExchangeSorts\README.md" />
