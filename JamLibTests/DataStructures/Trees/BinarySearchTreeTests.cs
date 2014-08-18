@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JamLib.DataStructures.Trees;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace JamLib.DataStructures.Trees.Tests
 {
     [TestClass()]
@@ -56,13 +51,100 @@ namespace JamLib.DataStructures.Trees.Tests
         [TestMethod()]
         public void CopyToTest()
         {
-            Assert.Fail("Not Implemented yet");
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 20, 25, 50, 66, 75, 80, 90, 92, 95, 111, 150, 166, 175, 200 };
+            int[] actual = new int[bst.Count];
+
+            // Default is InOrder
+            bst.CopyTo(actual, 0);
+
+            CollectionAssert.AreEqual(expected, actual, "Inorder bst traversal did not sort correctly");
+        }
+
+        [TestMethod()]
+        public void CopyTo_PreOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 90, 50, 20, 5, 25, 75, 66, 80, 150, 95, 92, 111, 175, 166, 200 };
+            int[] actual = new int[bst.Count];
+            bst.CopyTo(actual, 0, TraversalMethod.Preorder);
+
+            CollectionAssert.AreEqual(expected, actual, "Preorder bst traversal did not sort correctly");
+        }
+
+        [TestMethod()]
+        public void CopyTo_InOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 20, 25, 50, 66, 75, 80, 90, 92, 95, 111, 150, 166, 175, 200 };
+            int[] actual = new int[bst.Count];
+            bst.CopyTo(actual, 0, TraversalMethod.Inorder);
+
+            CollectionAssert.AreEqual(expected, actual, "Inorder bst traversal did not sort correctly");
+        }
+
+        [TestMethod()]
+        public void CopyTo_PostOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 25, 20, 66, 80, 75, 50, 92, 111, 95, 166, 200, 175, 150, 90 };
+            int[] actual = new int[bst.Count];
+            bst.CopyTo(actual, 0, TraversalMethod.Postorder);
+
+            CollectionAssert.AreEqual(expected, actual, "Postorder bst traversal did not sort correctly");
         }
 
         [TestMethod()]
         public void GetEnumeratorTest()
         {
-            Assert.Fail("Not Implemented yet");
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 20, 25, 50, 66, 75, 80, 90, 92, 95, 111, 150, 166, 175, 200 };
+            var actual = new System.Collections.Generic.List<int>();
+
+            // Iterate trough the collection, the default enumarator is InOrder
+            foreach (var value in bst) { actual.Add(value); }
+
+            CollectionAssert.AreEqual(expected, actual, "Inorder bst traversal did not work correctly");
+        }
+
+
+        [TestMethod()]
+        public void GetEnumerator_PreOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 90, 50, 20, 5, 25, 75, 66, 80, 150, 95, 92, 111, 175, 166, 200 };
+            var actual = new System.Collections.Generic.List<int>();
+
+            // Iterate trough the collection, the default enumarator is InOrder
+            foreach (var value in bst.Preorder) { actual.Add(value); }
+
+            CollectionAssert.AreEqual(expected, actual, "Preorder bst traversal did not work correctly");
+        }
+
+        [TestMethod()]
+        public void GetEnumerator_InOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 20, 25, 50, 66, 75, 80, 90, 92, 95, 111, 150, 166, 175, 200 };
+            var actual = new System.Collections.Generic.List<int>();
+
+            // Iterate trough the collection, the default enumarator is InOrder
+            foreach (var value in bst.Inorder) { actual.Add(value); }
+
+            CollectionAssert.AreEqual(expected, actual, "Inorder bst traversal did not work correctly");
+        }
+
+        [TestMethod()]
+        public void GetEnumerator_PostOrder_Test()
+        {
+            var bst = new BinarySearchTree<int>() { 90, 50, 150, 20, 75, 95, 175, 5, 25, 66, 80, 92, 111, 166, 200 };
+            int[] expected = new int[] { 5, 25, 20, 66, 80, 75, 50, 92, 111, 95, 166, 200, 175, 150, 90 };
+            var actual = new System.Collections.Generic.List<int>();
+
+            // Iterate trough the collection, the default enumarator is InOrder
+            foreach (var value in bst.Postorder) { actual.Add(value); }
+
+            CollectionAssert.AreEqual(expected, actual, "Postorder bst traversal did not work correctly");
         }
     }
 }

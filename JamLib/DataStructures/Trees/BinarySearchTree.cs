@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace JamLib.DataStructures.Trees
 {
+    public enum TraversalMethod
+    {
+        Preorder,
+        Inorder,
+        Postorder
+    }
+
     public class BinarySearchTree<T> : ICollection<T>
     {
         private int count;
@@ -153,7 +160,6 @@ namespace JamLib.DataStructures.Trees
 
             return null;
         }
-
         private void RemoveNode(BinarySearchTreeNode<T> node, BinarySearchTreeNode<T> parent)
         {
             // delete the item and fix up the tree
@@ -201,10 +207,141 @@ namespace JamLib.DataStructures.Trees
             }
         }
 
-        // TODO: Implement an Enumerator
-        public void CopyTo(T[] array, int arrayIndex) { throw new NotImplementedException(); }
-        public IEnumerator<T> GetEnumerator() { throw new NotImplementedException(); }
+        #region NOTE: Idea/Code Provided by: http://msdn.microsoft.com/en-US/library/ms379572(v=vs.80).aspx this is a brilliant way to implement this enumerator
+        #region GetEnumerator
+        /// <summary>
+        /// Copies the contents of the BST to an appropriately-sized array of type T, using the Inorder traversal method.
+        /// </summary>
+        public void CopyTo(T[] array, int index) { CopyTo(array, index, TraversalMethod.Inorder); }
+
+        /// <summary>
+        /// Copies the contents of the BST to an appropriately-sized array of type T, using a specified traversal method.
+        /// </summary>
+        public void CopyTo(T[] array, int index, TraversalMethod traversalMethod)
+        {
+            IEnumerable<T> enumerable = null;
+
+            // Determine which Enumerator-returning property to use, based on the TraversalMethod input parameter
+            if (traversalMethod == TraversalMethod.Preorder) { enumerable = Preorder; }
+            else if (traversalMethod == TraversalMethod.Inorder) { enumerable = Inorder; }
+            else { enumerable = Postorder; }
+
+            // dump the contents of the tree into the passed-in array
+            int i = 0;
+            foreach (T value in enumerable)
+            {
+                array[i + index] = value;
+                i++;
+            }
+        }
+
+
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator() { return GetEnumerator(TraversalMethod.Inorder); }
+        public IEnumerator<T> GetEnumerator(TraversalMethod TraversalMethod)
+        {
+            // The traversal approaches are defined as public properties in the BST class...
+            // This method simply returns the appropriate property.
+            if (TraversalMethod == TraversalMethod.Preorder) { return Preorder.GetEnumerator(); }
+            else if (TraversalMethod == TraversalMethod.Inorder) { return Inorder.GetEnumerator(); }
+            else { return Postorder.GetEnumerator(); }
+        }
+        #endregion
+
+        #region Enumerable Properties
+        public IEnumerable<T> Preorder
+        {
+            get
+            {
+                // A single stack is sufficient here - it simply maintains the correct
+                // order with which to process the children.
+                var toVisit = new Stack<BinarySearchTreeNode<T>>(Count);
+                var current = root;
+                if (current != null) { toVisit.Push(current); }
+
+                while (toVisit.Count != 0)
+                {
+                    // take the top item from the stack
+                    current = toVisit.Pop();
+
+                    // add the right and left children, if not null
+                    if (current.Right != null) { toVisit.Push(current.Right); }
+                    if (current.Left != null) { toVisit.Push(current.Left); }
+
+                    // return the current node
+                    yield return current.Value;
+                }
+            }
+        }
+
+        public IEnumerable<T> Inorder
+        {
+            get
+            {
+                // A single stack is sufficient - this code was made available by Grant Richins:
+                // http://blogs.msdn.com/grantri/archive/2004/04/08/110165.aspx
+                var toVisit = new Stack<BinarySearchTreeNode<T>>(Count);
+                for (BinarySearchTreeNode<T> current = root; current != null || toVisit.Count != 0; current = current.Right)
+                {
+                    // Get the left-most item in the subtree, remembering the path taken
+                    while (current != null)
+                    {
+                        toVisit.Push(current);
+                        current = current.Left;
+                    }
+
+                    current = toVisit.Pop();
+                    yield return current.Value;
+                }
+            }
+        }
+
+        public IEnumerable<T> Postorder
+        {
+            get
+            {
+                // maintain two stacks, one of a list of nodes to visit,
+                // and one of booleans, indicating if the nodee has been processed or not.
+                var toVisit = new Stack<BinarySearchTreeNode<T>>(Count);
+                var hasBeenProcessed = new Stack<bool>(Count);
+
+                BinarySearchTreeNode<T> current = root;
+                if (current != null)
+                {
+                    toVisit.Push(current);
+                    hasBeenProcessed.Push(false);
+                    current = current.Left;
+                }
+
+                while (toVisit.Count != 0)
+                {
+                    if (current != null)
+                    {
+                        // add this node to the stack with a false processed value
+                        toVisit.Push(current);
+                        hasBeenProcessed.Push(false);
+                        current = current.Left;
+                    }
+                    else
+                    {
+                        // see if the node on the stack has been processed
+                        bool processed = hasBeenProcessed.Pop();
+                        BinarySearchTreeNode<T> node = toVisit.Pop();
+
+                        if (!processed)
+                        {
+                            // if it's not been processed, "recurse" down the right subtree
+                            toVisit.Push(node);
+                            hasBeenProcessed.Push(true);    // it's now been processed
+                            current = node.Right;
+                        }
+                        else { yield return node.Value; }
+                    }
+                }
+            }
+        }
+        #endregion
+        #endregion
 
         // TODO: Think about implementing a base node class, that we can reuse in all trees
         private class BinarySearchTreeNode<T>
