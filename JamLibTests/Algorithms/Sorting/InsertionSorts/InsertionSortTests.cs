@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using JamLib.Algorithms.Sorting.InsertionSorts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace JamLib.Algorithms.Sorting.Tests
+namespace JamLib.Algorithms.Sorting.InsertionSorts.Tests
 {
     [TestClass()]
-    public class InsertionSortsTests
+    public class InsertionSortTests
     {
         [TestMethod()]
         public void InsertionSortTest()
@@ -49,24 +48,5 @@ namespace JamLib.Algorithms.Sorting.Tests
             CollectionAssert.AreEqual(interval1, actual, "InsertionSort with Interval 1 did not sort correctly");
         }
 
-        [TestMethod()]
-        public void ShellSortTest()
-        {
-            int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
-            int[] expected = new int[] { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
-            ShellSort.Sort(actual);
-
-            CollectionAssert.AreEqual(expected, actual, "ShellSort did not sort correctly");
-        }
-
-        [TestMethod()]
-        public void ShellSort_List_Test()
-        {
-            var actual = new List<double> { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
-            var expected = new List<double> { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
-            ShellSort.Sort(actual);
-
-            CollectionAssert.AreEqual(expected, actual, "ShellSort<T> did not sort correctly");
-        }
     }
 }

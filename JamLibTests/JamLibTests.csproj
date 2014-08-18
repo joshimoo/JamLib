@@ -56,10 +56,12 @@
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3WayTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSortTests.cs" />
-    <Compile Include="Algorithms\Sorting\InsertionSortsTests.cs" />
-    <Compile Include="Algorithms\Sorting\MergeSortsTests.cs" />
+    <Compile Include="Algorithms\Sorting\InsertionSorts\InsertionSortTests.cs" />
+    <Compile Include="Algorithms\Sorting\InsertionSorts\ShellSortTests.cs" />
+    <Compile Include="Algorithms\Sorting\MergeSorts\MergeSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSortTests.cs" />
-    <Compile Include="Algorithms\Sorting\SelectionSortsTests.cs" />
+    <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSortTests.cs" />
+    <Compile Include="Algorithms\Sorting\SortingUtilsTests.cs" />
     <Compile Include="DataStructures\Lists\IndexedLinkedListTests.cs" />
     <Compile Include="DataStructures\Lists\SinglyLinkedListTests.cs" />
     <Compile Include="DataStructures\Trees\BinarySearchTreeTests.cs" />

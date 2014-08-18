@@ -114,7 +114,7 @@ namespace JamLib.DataStructures.Lists
             {
                 // Adding in the middle of the list
                 var node = GetNode(index);
-                AddBefore(node, item); // TODO: Fix this, since we are inserting after the item we are not taking it's index
+                AddBefore(node, item);
             }
         }
 
