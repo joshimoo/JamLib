@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Searching\BinarySearch.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CombSort.cs" />
@@ -60,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\Hashing\" />
-    <Folder Include="Algorithms\Searching\" />
     <Folder Include="DataStructures\Heaps\" />
   </ItemGroup>
   <ItemGroup>
