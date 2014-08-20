@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace JamLib.Algorithms.Searching.Tests
@@ -30,20 +29,14 @@ namespace JamLib.Algorithms.Searching.Tests
         [TestMethod()]
         public void Search_CustomComparer_Test()
         {
-            // This is a rather stupid example for a custom comparer
-            var data = new Person[] { new Person() { Age = 2, Name = "firstname" }, new Person() { Age = 66, Name = "middlename" }, new Person() { Age = 33, Name = "lastname" } };
+            // Replaced this example with one that uses StringComparer: http://msdn.microsoft.com/en-us/library/system.stringcomparer%28v=vs.110%29.aspx
+            var data = new string[] { "abc", "notme", "FiNdMe", "last", "or", "not" };
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+            int actualIndex = LinearSearch.Search(data, "findme", comparer);
+            int expectedIndex = 2;
 
-            Comparison<Person> stupidExample = ((x, y) => x.Age > y.Age ? 1 : x.Age < y.Age ? -1 : 0);
-            int actualIndex = LinearSearch.Search<Person>(data, new Person() { Age = 66, Name = "stupidExample" }, Comparer<Person>.Create(stupidExample));
-            int expectedIndex = 1;
-
-            Assert.AreEqual(expectedIndex, actualIndex, "Binary search did not provide the correct index with a custom comparer");
+            Assert.AreEqual(expectedIndex, actualIndex, "Linear search did not provide the correct index with a custom comparer");
         }
 
-        private class Person
-        {
-            public int Age { get; set; }
-            public string Name { get; set; }
-        }
     }
 }
