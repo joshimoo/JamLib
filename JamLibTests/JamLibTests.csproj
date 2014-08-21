@@ -54,6 +54,7 @@
     <Compile Include="Algorithms\Searching\BinarySearchTests.cs" />
     <Compile Include="Algorithms\Searching\LinearSearchTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CombSortTests.cs" />
+    <Compile Include="Algorithms\Sorting\ExchangeSorts\GnomeSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\OddEvenSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3WayTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSortTests.cs" />

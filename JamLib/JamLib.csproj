@@ -44,6 +44,7 @@
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CombSort.cs" />
+    <Compile Include="Algorithms\Sorting\ExchangeSorts\GnomeSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\OddEvenSort.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSorts\InsertionSort.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSorts\ShellSort.cs" />
