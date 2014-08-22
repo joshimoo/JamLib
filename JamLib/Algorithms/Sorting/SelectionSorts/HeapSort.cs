@@ -16,20 +16,17 @@ namespace JamLib.Algorithms.Sorting.SelectionSorts
 
             // The following loop maintains the invariants that a[0:end] is a heap and every element
             // beyond end is greater than everything before it (so a[end:count] is in sorted order)
-            int endIndex = data.Count - 1;
-            while (endIndex > 0)
+            for (int endIndex = data.Count - 1; endIndex > 0; endIndex--)
             {
                 // a[0] is the root and largest value. The swap moves it in front of the sorted elements.
                 SortingUtils.Swap(data, 0, endIndex);
 
-                // the heap size is reduced by one
-                endIndex--;
-
-                // the swap ruined the heap property, so restore it
-                SiftDown(data, 0, endIndex, comparer);
+                // the swap ruined the heap property, so restore it for all elements in front of the sorted elements (endIndex -1)
+                SiftDown(data, 0, endIndex - 1, comparer);
             }
         }
 
+        // Build a Max Heap (biggest element == root)
         private static void Heapify<T>(IList<T> data, IComparer<T> comparer)
         {
             //start is assigned the index of the last parent node, since the last element is at count-1 we need to find it's parent
