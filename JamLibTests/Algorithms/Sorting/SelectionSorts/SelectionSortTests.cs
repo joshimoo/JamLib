@@ -23,7 +23,7 @@ namespace JamLib.Algorithms.Sorting.SelectionSorts.Tests
             var expected = new List<double> { -24, -4, 0, 1, 2, 4, 5, 5, 6, 7, 10, 12 };
             SelectionSort.Sort(actual);
 
-            CollectionAssert.AreEqual(expected, actual, "BubbleSort<T> did not sort correctly");
+            CollectionAssert.AreEqual(expected, actual, "SelectionSort<T> did not sort correctly");
         }
     }
 }

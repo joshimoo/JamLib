@@ -43,7 +43,7 @@ namespace JamLib.Algorithms.Sorting.ExchangeSorts.Tests
             int[] actual = new int[] { 12, 10, 4, 5, 0, 6, 2, 1, -4, -24, 7, 5 };
             int[] expected = new int[] { 12, 10, 7, 6, 5, 5, 4, 2, 1, 0, -4, -24 };
             Comparison<int> descending = ((x, y) => y > x ? 1 : y < x ? -1 : 0);
-            QuickSort.Sort(actual, Comparer<int>.Create(@descending));
+            QuickSort.Sort(actual, Comparer<int>.Create(descending));
 
             CollectionAssert.AreEqual(expected, actual, "QuickSort<T> did not sort descending");
         }
