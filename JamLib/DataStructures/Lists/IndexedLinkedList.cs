@@ -230,9 +230,17 @@ namespace JamLib.DataStructures.Lists
             }
         }
 
-        // TODO: Implement Enumerator
-        public IEnumerator<T> GetEnumerator() { throw new NotImplementedException(); }
+        // Enumerator
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator()
+        {
+            var current = head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
 
         public class IndexedLinkedListNode<T>
         {

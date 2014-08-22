@@ -131,9 +131,14 @@ namespace JamLib.DataStructures.Lists.Tests
         }
 
         [TestMethod()]
-        public void GetEnumeratorTest()
+        public void GetYieldBasedEnumeratorTest()
         {
-            Assert.Fail();
+            var list = new IndexedLinkedList<int> { 1, 0, -1, 44, 22, 22, 11, 2, 3, 4, 5 };
+            var expected = new int[] { 1, 0, -1, 44, 22, 22, 11, 2, 3, 4, 5 };
+            var actual = new System.Collections.Generic.List<int>();
+            foreach (var item in list) { actual.Add(item); }
+
+            CollectionAssert.AreEqual(expected, actual, "The collections do not match");
         }
     }
 }
