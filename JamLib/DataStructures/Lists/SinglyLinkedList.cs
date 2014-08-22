@@ -11,11 +11,23 @@ namespace JamLib.DataStructures.Lists
     public class SinglyLinkedList<T> : ICollection<T>
     {
         private int count;
-        public int Count { get { return count; } }
-        public bool IsReadOnly { get { return false; } }
+
+        public int Count
+        {
+            get { return count; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return false; }
+        }
 
         private SinglyLinkedListNode<T> head;
-        public SinglyLinkedListNode<T> First { get { return head; } }
+
+        public SinglyLinkedListNode<T> First
+        {
+            get { return head; }
+        }
 
         public void Add(T value)
         {
@@ -65,12 +77,16 @@ namespace JamLib.DataStructures.Lists
         }
 
         public bool Contains(T item) { return Find(item) != null; }
+
         public SinglyLinkedListNode<T> Find(T value)
         {
             var node = head;
             while (node != null)
             {
-                if (Equals(node.Value, value)) { return node; }
+                if (Equals(node.Value, value))
+                {
+                    return node;
+                }
                 node = node.Next;
             }
 
@@ -80,7 +96,10 @@ namespace JamLib.DataStructures.Lists
         public void CopyTo(T[] array, int arrayIndex)
         {
             // There is not enough Space in the Array to hold all list items
-            if (arrayIndex < 0 || (array.Length - arrayIndex) < count) { throw new ArgumentOutOfRangeException(); }
+            if (arrayIndex < 0 || (array.Length - arrayIndex) < count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
             var node = head;
             while (node != null)
@@ -92,8 +111,8 @@ namespace JamLib.DataStructures.Lists
 
 
         // TODO: Implement Enumerator
-        public IEnumerator<T> GetEnumerator() { throw new System.NotImplementedException(); }
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator() { return new Enumerator(this); }
 
         public class SinglyLinkedListNode<T>
         {
@@ -105,6 +124,60 @@ namespace JamLib.DataStructures.Lists
                 Value = value;
                 Next = next;
             }
+        }
+
+        // Enumerator
+        public struct Enumerator : IEnumerator<T>, System.Collections.IEnumerator
+        {
+            private SinglyLinkedList<T> list;
+            private SinglyLinkedListNode<T> node;
+            private T current;
+            private int index;
+
+            internal Enumerator(SinglyLinkedList<T> list)
+            {
+                this.list = list;
+                node = list.head;
+                current = default(T);
+                index = 0;
+            }
+
+
+            public T Current { get { return current; } }
+            object System.Collections.IEnumerator.Current
+            {
+                get
+                {
+                    if (index == 0 || (index == list.Count + 1)) { throw new InvalidOperationException(); }
+                    return current;
+                }
+            }
+
+            public bool MoveNext()
+            {
+                // No more nodes left
+                if (node == null)
+                {
+                    index = list.Count + 1;
+                    return false;
+                }
+
+                ++index;
+                current = node.Value;
+                node = node.Next;
+                // if (node == list.head) { node = null; }
+
+                return true;
+            }
+
+            void System.Collections.IEnumerator.Reset()
+            {
+                current = default(T);
+                node = list.head;
+                index = 0;
+            }
+
+            public void Dispose() { }
         }
     }
 }

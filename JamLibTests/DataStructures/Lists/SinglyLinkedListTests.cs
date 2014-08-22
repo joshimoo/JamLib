@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Specialized;
+using System.Security.AccessControl;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JamLib.DataStructures.Lists;
 
 namespace JamLib.DataStructures.Lists.Tests
@@ -61,7 +63,13 @@ namespace JamLib.DataStructures.Lists.Tests
         [TestMethod()]
         public void GetEnumeratorTest()
         {
-            Assert.Fail();
+            // NOTE: the Add method, adds them to the front of the list, therefore the list is in reverse
+            var list = new SinglyLinkedList<int> { 1, 0, -1, 44, 22, 22, 11, 2, 3, 4, 5 };
+            var expected = new int[] { 5, 4, 3, 2, 11, 22, 22, 44, -1, 0, 1 };
+            var actual = new System.Collections.Generic.List<int>();
+            foreach (var item in list) { actual.Add(item); }
+
+            CollectionAssert.AreEqual(expected, actual, "The collections do not match");
         }
     }
 }
