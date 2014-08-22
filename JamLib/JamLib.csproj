@@ -51,6 +51,7 @@
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3Way.cs" />
     <Compile Include="Algorithms\Sorting\MergeSorts\MergeSort.cs" />
+    <Compile Include="Algorithms\Sorting\SelectionSorts\HeapSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSort.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtils.cs" />
     <Compile Include="DataStructures\Lists\DoublyLinkedList.cs" />
@@ -63,13 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\Hashing\" />
-    <Folder Include="DataStructures\Heaps\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Algorithms\Sorting\ExchangeSorts\README.md" />
     <None Include="Algorithms\Sorting\MergeSorts\README.md" />
     <None Include="Algorithms\Sorting\InsertionSorts\README.md" />
     <None Include="Algorithms\Sorting\SelectionSorts\README.md" />
+    <None Include="DataStructures\Heaps\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
