@@ -4,5 +4,5 @@ Odd–even sort: http://en.wikipedia.org/wiki/Odd–even_sort
 Comb sort: http://en.wikipedia.org/wiki/Comb_sort
 Gnome sort: http://en.wikipedia.org/wiki/Gnome_sort
 Quicksort: http://en.wikipedia.org/wiki/Quicksort
-Stooge sort:
+Stooge sort: http://en.wikipedia.org/wiki/Stooge_sort
 Bogosort:

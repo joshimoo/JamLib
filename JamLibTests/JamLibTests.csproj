@@ -59,6 +59,7 @@
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3WayTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSortTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSortTests.cs" />
+    <Compile Include="Algorithms\Sorting\ExchangeSorts\StoogeSortTests.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSorts\InsertionSortTests.cs" />
     <Compile Include="Algorithms\Sorting\InsertionSorts\ShellSortTests.cs" />
     <Compile Include="Algorithms\Sorting\MergeSorts\MergeSortTests.cs" />
