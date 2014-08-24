@@ -15,8 +15,8 @@ namespace JamLib.Algorithms.Sorting
             data[j] = temp;
         }
 
-        public static bool Less<T>(T i, T j) { return Less(i, j, Comparer<T>.Default); }
-        public static bool Less<T>(T i, T j, IComparer<T> comparer) { return comparer.Compare(i, j) < 0; }
+        internal static bool Less<T>(T i, T j) { return Less(i, j, Comparer<T>.Default); }
+        internal static bool Less<T>(T i, T j, IComparer<T> comparer) { return comparer.Compare(i, j) < 0; }
 
         // Fisher–Yates_shuffle: http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
         public static void Shuffle<T>(this IList<T> array) { Shuffle(array, new Random()); }
@@ -28,6 +28,18 @@ namespace JamLib.Algorithms.Sorting
                 int j = rng.Next(i);
                 Swap(array, i - 1, j);
             }
+        }
+
+        public static bool IsSorted<T>(IList<T> data) { return IsSorted(data, Comparer<T>.Default); }
+        public static bool IsSorted<T>(IList<T> data, IComparer<T> comparer)
+        {
+            for (int i = 1; i < data.Count; i++)
+            {
+                // if the next element is smaller then the list is not sorted
+                if (comparer.Compare(data[i - 1], data[i]) > 0) { return false; }
+            }
+
+            return true;
         }
     }
 }

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\Searching\BinarySearch.cs" />
     <Compile Include="Algorithms\Searching\LinearSearch.cs" />
+    <Compile Include="Algorithms\Sorting\ExchangeSorts\BogoSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BubbleSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CocktailSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\CombSort.cs" />

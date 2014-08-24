@@ -9,7 +9,7 @@ namespace JamLib.Algorithms.Searching.Tests
     public class BinarySearchTests
     {
         [TestMethod()]
-        public void SearchTest()
+        public void BinarySearchTest()
         {
             // Default Data needs to be sorted ascending
             var data = new int[] { -1, 0, 1, 4, 5, 7, 88, 90, 111, 160, 250 };
@@ -20,7 +20,7 @@ namespace JamLib.Algorithms.Searching.Tests
         }
 
         [TestMethod()]
-        public void Search_CustomComparer_Test()
+        public void BinarySearch_CustomComparer_Test()
         {
             // This data, is sorted descending, therefore we use a custom comparer
             int[] data = new int[] { 12, 10, 7, 6, 5, 5, 4, 2, 1, 0, -4, -24 };

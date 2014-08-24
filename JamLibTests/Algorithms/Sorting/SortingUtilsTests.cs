@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using JamLib.Algorithms.Sorting;
 
 namespace JamLib.Algorithms.Sorting.Tests
 {
@@ -47,6 +48,16 @@ namespace JamLib.Algorithms.Sorting.Tests
             SortingUtils.Shuffle(actual);
 
             CollectionAssert.AreEquivalent(expected, actual);
+        }
+
+        [TestMethod()]
+        public void IsSortedTest()
+        {
+            int[] sorted = new int[] { -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Assert.IsTrue(SortingUtils.IsSorted(sorted));
+
+            int[] unsorted = new int[] { 8, 10, 5, 1, -1, 6, 9, 3, 0, 4, 2, 7 };
+            Assert.IsFalse(SortingUtils.IsSorted(unsorted));
         }
     }
 }

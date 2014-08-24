@@ -7,7 +7,7 @@ namespace JamLib.Algorithms.Searching.Tests
     public class LinearSearchTests
     {
         [TestMethod()]
-        public void SearchTest()
+        public void LinearSearchTest()
         {
             var data = new int[] { -1, 0, 1, 4, 5, 7, 88, 90, 111, 160, 250 };
             int actualIndex = LinearSearch.Search(data, 90);
@@ -17,7 +17,7 @@ namespace JamLib.Algorithms.Searching.Tests
         }
 
         [TestMethod()]
-        public void ReverseSearchTest()
+        public void LinearSearchReverseTest()
         {
             var data = new int[] { -1, 0, 1, 4, 5, 7, 88, 90, 111, 160, 250 };
             int actualIndex = LinearSearch.ReverseSearch(data, 90);
@@ -27,7 +27,7 @@ namespace JamLib.Algorithms.Searching.Tests
         }
 
         [TestMethod()]
-        public void Search_CustomComparer_Test()
+        public void LinearSearch_CustomComparer_Test()
         {
             // Replaced this example with one that uses StringComparer: http://msdn.microsoft.com/en-us/library/system.stringcomparer%28v=vs.110%29.aspx
             var data = new string[] { "abc", "notme", "FiNdMe", "last", "or", "not" };
