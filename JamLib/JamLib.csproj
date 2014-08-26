@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\MathUtils.cs" />
     <Compile Include="Algorithms\Searching\BinarySearch.cs" />
     <Compile Include="Algorithms\Searching\LinearSearch.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BogoSort.cs" />
