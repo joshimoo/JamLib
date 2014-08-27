@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Combinatorial\CycleFinding\FloydsCycleDetection.cs" />
     <Compile Include="Algorithms\MathUtils.cs" />
     <Compile Include="Algorithms\Searching\BinarySearch.cs" />
     <Compile Include="Algorithms\Searching\LinearSearch.cs" />
@@ -69,6 +70,7 @@
     <Folder Include="Algorithms\Hashing\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithms\Combinatorial\CycleFinding\README.md" />
     <None Include="Algorithms\Sorting\ExchangeSorts\README.md" />
     <None Include="Algorithms\Sorting\MergeSorts\README.md" />
     <None Include="Algorithms\Sorting\InsertionSorts\README.md" />

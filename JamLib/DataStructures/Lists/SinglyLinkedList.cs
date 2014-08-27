@@ -11,26 +11,15 @@ namespace JamLib.DataStructures.Lists
     public class SinglyLinkedList<T> : ICollection<T>
     {
         private int count;
-
-        public int Count
-        {
-            get { return count; }
-        }
-
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public int Count { get { return count; } }
+        public bool IsReadOnly { get { return false; } }
 
         private SinglyLinkedListNode<T> head;
-
-        public SinglyLinkedListNode<T> First
-        {
-            get { return head; }
-        }
+        public SinglyLinkedListNode<T> First { get { return head; } }
 
         public void Add(T value)
         {
+            // TODO: Refactor to use a tail instead of adding infront of the head
             // NOTE: This is not needed since when the head is null, we are passing null anyway. Leaving it for the moment, till I refactor to use a tail instead of adding as a new head.
             if (head == null)
             {
@@ -77,7 +66,6 @@ namespace JamLib.DataStructures.Lists
         }
 
         public bool Contains(T item) { return Find(item) != null; }
-
         public SinglyLinkedListNode<T> Find(T value)
         {
             var node = head;
@@ -96,10 +84,7 @@ namespace JamLib.DataStructures.Lists
         public void CopyTo(T[] array, int arrayIndex)
         {
             // There is not enough Space in the Array to hold all list items
-            if (arrayIndex < 0 || (array.Length - arrayIndex) < count)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            if (arrayIndex < 0 || (array.Length - arrayIndex) < count) { throw new ArgumentOutOfRangeException(); }
 
             var node = head;
             while (node != null)
@@ -109,11 +94,7 @@ namespace JamLib.DataStructures.Lists
             }
         }
 
-
-        // TODO: Implement Enumerator
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
-        public IEnumerator<T> GetEnumerator() { return new Enumerator(this); }
-
+        #region List Node class
         public class SinglyLinkedListNode<T>
         {
             public SinglyLinkedListNode<T> Next { get; set; }
@@ -125,8 +106,12 @@ namespace JamLib.DataStructures.Lists
                 Next = next;
             }
         }
+        #endregion
 
-        // Enumerator
+        #region Enumerator
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator() { return new Enumerator(this); }
+
         public struct Enumerator : IEnumerator<T>, System.Collections.IEnumerator
         {
             private SinglyLinkedList<T> list;
@@ -179,5 +164,6 @@ namespace JamLib.DataStructures.Lists
 
             public void Dispose() { }
         }
+        #endregion
     }
 }

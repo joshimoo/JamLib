@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Algorithms\Combinatorial\CycleFinding\FloydsCycleDetectionTests.cs" />
     <Compile Include="Algorithms\Searching\BinarySearchTests.cs" />
     <Compile Include="Algorithms\Searching\LinearSearchTests.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\BogoSortTests.cs" />
