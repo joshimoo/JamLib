@@ -18,6 +18,8 @@ namespace JamLib.DataStructures.Lists
 
         private IndexedLinkedListNode<T> head;
         private IndexedLinkedListNode<T> tail;
+        public IndexedLinkedListNode<T> First { get { return head; } }
+        public IndexedLinkedListNode<T> Last { get { return tail; } }
 
         // Adds to the end of the list
         public void Add(T value)
