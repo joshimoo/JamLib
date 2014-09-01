@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace JamLib.Algorithms.Combinatorial.CycleFinding
 {
     // TODO: Think about this naming scheme.
-    public static class FloydsCycleDetection
+    public static class FloydCycleDetection
     {
         // TODO: Implement a more Generic version which also returns the cycle length as well as cycle start
         // The NetFramework implementation of a LinkedList stops you from adding any cycles, therefore we are using our rudimentary implementation for demonstration
