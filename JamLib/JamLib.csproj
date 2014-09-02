@@ -56,6 +56,7 @@
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort.cs" />
     <Compile Include="Algorithms\Sorting\ExchangeSorts\QuickSort3Way.cs" />
     <Compile Include="Algorithms\Sorting\MergeSorts\MergeSort.cs" />
+    <Compile Include="Algorithms\Sorting\OtherSorts\CountingSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\HeapSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSort.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtils.cs" />
@@ -75,6 +76,7 @@
     <None Include="Algorithms\Sorting\ExchangeSorts\README.md" />
     <None Include="Algorithms\Sorting\MergeSorts\README.md" />
     <None Include="Algorithms\Sorting\InsertionSorts\README.md" />
+    <None Include="Algorithms\Sorting\OtherSorts\README.md" />
     <None Include="Algorithms\Sorting\SelectionSorts\README.md" />
     <None Include="DataStructures\Heaps\README.md" />
   </ItemGroup>
