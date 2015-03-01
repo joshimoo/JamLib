@@ -71,6 +71,7 @@
     <Compile Include="Algorithms\Sorting\SelectionSorts\HeapSortTests.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSortTests.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtilsTests.cs" />
+    <Compile Include="Crypto\GronsfeldCipherTests.cs" />
     <Compile Include="DataStructures\Lists\IndexedLinkedListTests.cs" />
     <Compile Include="DataStructures\Lists\SinglyLinkedListTests.cs" />
     <Compile Include="DataStructures\Trees\BinarySearchTreeTests.cs" />

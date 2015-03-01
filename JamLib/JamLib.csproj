@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -60,6 +61,7 @@
     <Compile Include="Algorithms\Sorting\SelectionSorts\HeapSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSorts\SelectionSort.cs" />
     <Compile Include="Algorithms\Sorting\SortingUtils.cs" />
+    <Compile Include="Crypto\GronsfeldCipher.cs" />
     <Compile Include="DataStructures\Lists\DoublyLinkedList.cs" />
     <Compile Include="DataStructures\Lists\ILinkedList.cs" />
     <Compile Include="DataStructures\Lists\IndexedLinkedList.cs" />
